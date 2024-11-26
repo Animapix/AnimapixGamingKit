@@ -37,8 +37,8 @@ namespace AnimapixGamingKit
                 BeginTextureMode(canvas);
                 ClearBackground(Color.Gray);
 
-                // Draw scenes
-                
+                ScenesManager.Process();
+
                 EndTextureMode();
 
                 BeginDrawing();
