@@ -1,4 +1,4 @@
-﻿namespace AnimapixGamingKit
+﻿namespace AnimapixGamingKit.Tilemap
 {
     public class Tilemap
     {
@@ -9,7 +9,7 @@
         public Tilemap(int columns, int rows, int tileSize, string texture)
         {
             this.tileSize = tileSize;
-            this.tileSheet = new TileSheet(tileSize, 0, 0, texture);
+            tileSheet = new TileSheet(tileSize, 0, 0, texture);
             tiles = new Tile[columns, rows];
         }
 
@@ -19,16 +19,15 @@
             {
                 for (int row = 0; row < tiles.GetLength(1); row++)
                 {
-                    if (tiles[column,row] != null)
+                    if (tiles[column, row] != null)
                         tiles[column, row].Draw();
-                    
-
                 }
             }
         }
 
         public void SetTile(int column, int row, int tileIndex)
         {
+            if (column >= tiles.GetLength(0) || row >= tiles.GetLength(1)) return;
             tiles[column, row] = new Tile(tileIndex, column, row, this, tileSheet);
         }
     }

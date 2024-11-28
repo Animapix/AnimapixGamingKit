@@ -1,4 +1,4 @@
-﻿namespace AnimapixGamingKit
+﻿namespace AnimapixGamingKit.Scenes
 {
     public abstract class Scene
     {

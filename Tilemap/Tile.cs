@@ -1,34 +1,32 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection.Metadata.Ecma335;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace AnimapixGamingKit
+﻿namespace AnimapixGamingKit.Tilemap
 {
     internal class Tile
     {
         private Tilemap tilemap;
         private TileSheet tileSheet;
-        private int id = 0;
+        private bool walkable = true;
+        private int textureID = 0;
         private int column;
         private int row;
 
-        internal Tile(int id, int column, int row, Tilemap tilemap, TileSheet tileSheet)
+        public int TextureID => textureID;
+        public bool Walkable => walkable;
+
+        internal Tile(int textureID, int column, int row, Tilemap tilemap, TileSheet tileSheet, bool walkable = true)
         {
-            this.id = id;
+            this.textureID = textureID;
             this.column = column;
             this.row = row;
             this.tilemap = tilemap;
             this.tileSheet = tileSheet;
+            this.walkable = walkable;
         }
 
         internal void Draw()
         {
             int x = column * tilemap.tileSize;
             int y = row * tilemap.tileSize;
-            tileSheet.DrawTile(id, new Vector(x, y));
+            tileSheet.DrawTile(textureID, new Vector(x, y));
         }
     }
 }

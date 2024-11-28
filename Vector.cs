@@ -15,6 +15,11 @@ namespace AnimapixGamingKit
         public static Vector Left => new Vector(-1, 0);
         public static Vector Right => new Vector(1, 0);
 
+        public static Vector from(Vector2 vector2)
+        {
+            return new Vector(vector2.X, vector2.Y);
+        }
+
         public Vector2 Vector2 => new Vector2(x, y);
 
         public Vector(float x = 0, float y = 0)

@@ -1,11 +1,12 @@
-﻿namespace AnimapixGamingKit
+﻿namespace AnimapixGamingKit.Scenes
 {
     public static class ScenesManager
     {
         private static Scene? currentScene;
 
-        internal static void Process() { 
-            if(currentScene != null)
+        internal static void Process()
+        {
+            if (currentScene != null)
                 currentScene.Process();
         }
 

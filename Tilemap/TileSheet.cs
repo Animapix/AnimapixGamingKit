@@ -1,6 +1,6 @@
 ﻿using Raylib_cs;
 
-namespace AnimapixGamingKit
+namespace AnimapixGamingKit.Tilemap
 {
     internal class TileSheet
     {
@@ -22,7 +22,7 @@ namespace AnimapixGamingKit
             int tilesPerRow = texture.Width / tileSize;
             int row = tileIndex / tilesPerRow;
             int col = tileIndex % tilesPerRow;
-            
+
             Rectangle source = new Rectangle(col * tileSize + col * spacing + margin, row * tileSize + row * spacing + margin, tileSize, tileSize);
             Raylib.DrawTextureRec(texture, source, position.Vector2, Color.White);
         }
