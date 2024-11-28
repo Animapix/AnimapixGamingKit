@@ -14,20 +14,20 @@ namespace AnimapixGamingKit
         private static float offsetX = 1f;
         private static float offsetY = 1f;
 
-        private static RenderTexture2D canvas = LoadRenderTexture(width, height);
-
-
-        public static void Init(int screenWidth = 1280, int screenHeight = 720, string title = "MY GAME", int targetFPS = 60)
+        public static void Init(int screenWidth = 1280, int screenHeight = 720, string title = "MY GAME", int width = 320, int height = 180, int targetFPS = 60)
         {
+            Game.width = width;
+            Game.height = height;
             SetConfigFlags(ConfigFlags.ResizableWindow | ConfigFlags.VSyncHint);
             InitWindow(screenWidth, screenHeight, title);
             SetTargetFPS(targetFPS);
-            SetTextureFilter(canvas.Texture, TextureFilter.Point);
             InitAudioDevice();
         }
 
         public static void Run()
         {
+            RenderTexture2D canvas = LoadRenderTexture(width, height);
+            SetTextureFilter(canvas.Texture, TextureFilter.Point);
             while (!WindowShouldClose())
             {
                 float scaledW = width * scale;
