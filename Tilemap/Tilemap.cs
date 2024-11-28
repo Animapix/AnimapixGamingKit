@@ -4,12 +4,13 @@
     {
         public int tileSize { get; private set; }
         private Tile[,] tiles;
-        private TileSheet tileSheet;
+        public TileSheet tileSheet { get; private set; }
 
-        public Tilemap(int columns, int rows, int tileSize, string texture)
+        public Tilemap(int columns, int rows, TileSheet tileSheet)
         {
             this.tileSize = tileSize;
-            tileSheet = new TileSheet(tileSize, 0, 0, texture);
+            this.tileSheet = tileSheet;
+            tileSize = tileSheet.tileSize;
             tiles = new Tile[columns, rows];
         }
 

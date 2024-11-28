@@ -1,6 +1,6 @@
 ﻿using Raylib_cs;
 
-namespace AnimapixGamingKit
+namespace AnimapixGamingKit.Sprites
 {
     public class Sprite
     {

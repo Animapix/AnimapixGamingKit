@@ -1,6 +1,6 @@
 ﻿namespace AnimapixGamingKit.Tilemap
 {
-    internal class Tile
+    public class Tile
     {
         private Tilemap tilemap;
         private TileSheet tileSheet;
@@ -12,7 +12,7 @@
         public int TextureID => textureID;
         public bool Walkable => walkable;
 
-        internal Tile(int textureID, int column, int row, Tilemap tilemap, TileSheet tileSheet, bool walkable = true)
+        public Tile(int textureID, int column, int row, Tilemap tilemap, TileSheet tileSheet, bool walkable = true)
         {
             this.textureID = textureID;
             this.column = column;
@@ -22,10 +22,11 @@
             this.walkable = walkable;
         }
 
-        internal void Draw()
+        public void Draw()
         {
             int x = column * tilemap.tileSize;
             int y = row * tilemap.tileSize;
+
             tileSheet.DrawTile(textureID, new Vector(x, y));
         }
     }

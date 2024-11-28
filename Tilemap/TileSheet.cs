@@ -2,14 +2,14 @@
 
 namespace AnimapixGamingKit.Tilemap
 {
-    internal class TileSheet
+    public class TileSheet
     {
-        internal int tileSize { get; private set; }
-        internal int spacing { get; private set; }
-        internal int margin { get; private set; }
+        public int tileSize { get; private set; }
+        public int spacing { get; private set; }
+        public int margin { get; private set; }
         private Texture2D texture;
 
-        internal TileSheet(int tileSize, int spacing, int margin, string texture)
+        public TileSheet(string texture ,int tileSize = 16, int spacing = 0, int margin = 0)
         {
             this.tileSize = tileSize;
             this.spacing = spacing;
@@ -17,7 +17,7 @@ namespace AnimapixGamingKit.Tilemap
             this.texture = TexturesManager.GetTexture(texture);
         }
 
-        internal void DrawTile(int tileIndex, Vector position)
+        public void DrawTile(int tileIndex, Vector position)
         {
             int tilesPerRow = texture.Width / tileSize;
             int row = tileIndex / tilesPerRow;
