@@ -2,34 +2,37 @@
 {
     public class Tilemap
     {
-        public int tileSize { get; private set; }
-        private Tile[,] tiles;
-        public TileSheet tileSheet { get; private set; }
+        private List<Layer> layers = new List<Layer>();
+        public int columns { get; private set; }
+        public int rows { get; private set; }
 
-        public Tilemap(int columns, int rows, TileSheet tileSheet)
+
+        public Tilemap(int columns, int rows)
         {
-            this.tileSize = tileSize;
-            this.tileSheet = tileSheet;
-            tileSize = tileSheet.tileSize;
-            tiles = new Tile[columns, rows];
+            this.columns = columns;
+            this.rows = rows;
+        }
+
+        public void AddLayer(string name, TileSheet tileSheet)
+        {
+            layers.Add(new Layer(name, columns, rows, tileSheet));
         }
 
         public void Draw()
         {
-            for (int column = 0; column < tiles.GetLength(0); column++)
+            foreach (Layer layer in layers)
             {
-                for (int row = 0; row < tiles.GetLength(1); row++)
-                {
-                    if (tiles[column, row] != null)
-                        tiles[column, row].Draw();
-                }
+                layer.Draw();
             }
         }
 
-        public void SetTile(int column, int row, int tileIndex)
+        public void SetTile(int column, int row, int tileIndex, string layer)
         {
-            if (column >= tiles.GetLength(0) || row >= tiles.GetLength(1)) return;
-            tiles[column, row] = new Tile(tileIndex, column, row, this, tileSheet);
+            var l = layers.Find(l => l.name == layer);
+            if (l != null)
+            {
+                l.SetTile(column, row, tileIndex);
+            }
         }
     }
 }

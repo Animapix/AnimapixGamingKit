@@ -6,16 +6,18 @@ namespace AnimapixGamingKit.Tilemap
     {
         public int tileSize { get; private set; }
         public int spacing { get; private set; }
-        public int margin { get; private set; }
+        public int padding { get; private set; }
+        public int UID { get; private set; }
         private Texture2D texture;
 
-        public TileSheet(string texture ,int tileSize = 16, int spacing = 0, int margin = 0)
+        public TileSheet(string texture , int tileSize = 16, int spacing = 0, int margin = 0, int UID = 0)
         {
             this.tileSize = tileSize;
             this.spacing = spacing;
-            this.margin = margin;
+            this.padding = margin;
             this.texture = TexturesManager.GetTexture(texture);
-        }
+            this.UID = UID;
+         }
 
         public void DrawTile(int tileIndex, Vector position)
         {
@@ -23,7 +25,7 @@ namespace AnimapixGamingKit.Tilemap
             int row = tileIndex / tilesPerRow;
             int col = tileIndex % tilesPerRow;
 
-            Rectangle source = new Rectangle(col * tileSize + col * spacing + margin, row * tileSize + row * spacing + margin, tileSize, tileSize);
+            Rectangle source = new Rectangle(col * tileSize + col * spacing + padding, row * tileSize + row * spacing + padding, tileSize, tileSize);
             Raylib.DrawTextureRec(texture, source, position.Vector2, Color.White);
         }
     }

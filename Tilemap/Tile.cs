@@ -2,7 +2,6 @@
 {
     public class Tile
     {
-        private Tilemap tilemap;
         private TileSheet tileSheet;
         private bool walkable = true;
         private int textureID = 0;
@@ -12,20 +11,19 @@
         public int TextureID => textureID;
         public bool Walkable => walkable;
 
-        public Tile(int textureID, int column, int row, Tilemap tilemap, TileSheet tileSheet, bool walkable = true)
+        public Tile(int textureID, int column, int row, TileSheet tileSheet, bool walkable = true)
         {
             this.textureID = textureID;
             this.column = column;
             this.row = row;
-            this.tilemap = tilemap;
             this.tileSheet = tileSheet;
             this.walkable = walkable;
         }
 
         public void Draw()
         {
-            int x = column * tilemap.tileSize;
-            int y = row * tilemap.tileSize;
+            int x = column * tileSheet.tileSize;
+            int y = row * tileSheet.tileSize;
 
             tileSheet.DrawTile(textureID, new Vector(x, y));
         }
